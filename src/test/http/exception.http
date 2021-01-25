@@ -1,0 +1,2 @@
+###  this request shoudl return last modified header
+GET http://localhost:8080/exception

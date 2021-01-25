@@ -1,0 +1,22 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.javax.cache.missing_cache_strategy: create
+      javax.persistence.sharedCache.mode: ENABLE_SELECTIVE
+      hibernate.generate_statistics: true
+      hibernate.cache.use_query_cache: true
+      hibernate.cache.use_second_level_cache: true
+      show_sql: true
+      format_sql: true
+      type: trace
+    open-in-view: false
+  datasource:
+    url: 'jdbc:mysql://localhost:3306/jpa_hibernate'
+    username: 'bibis'
+    password: 'bibis'
+    name: 'jpa_hibernate'
+    initialization-mode: always
+server:
+  port: 8080

@@ -1,0 +1,11 @@
+### deferred result response
+GET http://localhost:8080/async-deferredresult
+
+### callable response
+GET http://localhost:8080/async-callable
+
+### sse emmiter
+GET http://localhost:8080/response-body-emmiter
+
+### callable response
+OPTIONS http://localhost:8080/output-stream

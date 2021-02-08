@@ -12,10 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 @NoArgsConstructor
 public class MyHandlerInterceptor implements HandlerInterceptor  // или расширить  HandlerInterceptorAdapter
 {
+    // для асинхронных запросов, мы попадаем 2 раза сюда
     @Override
     public boolean preHandle( HttpServletRequest request, HttpServletResponse response, Object handler ) throws Exception
     {
-        System.out.println( "preHandle of MyHandlerInterceptor" );
+        System.out.println( "preHandle of MyHandlerInterceptor. Is async started - " + request.isAsyncStarted() );
         response.addHeader( "bibis", "pekush" );
         return true;   // если тру, то цепочка выполнения продолжится, иначе в контроллер, или следующие интерцепторы не попадём
     }
@@ -24,12 +25,12 @@ public class MyHandlerInterceptor implements HandlerInterceptor  // или ра�
     public void postHandle( HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView ) throws Exception
     {
         response.addHeader( "pekush", "bibis" );   // слишком поздно модифицировать респонс
-        System.out.println( "postHandle of MyHandlerInterceptor" );
+        System.out.println( "postHandle of MyHandlerInterceptor. Is async started - " + request.isAsyncStarted() );
     }
 
     @Override
     public void afterCompletion( HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex ) throws Exception
     {
-        System.out.println( "afterCompletion of MyHandlerInterceptor" );
+        System.out.println( "afterCompletion of MyHandlerInterceptor. Is async started - " + request.isAsyncStarted() );
     }
 }
